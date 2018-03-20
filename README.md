@@ -12,3 +12,5 @@ https://spring.io/guides/gs/accessing-data-jpa/
 https://www.objectdb.com/java/jpa/start/entity
 
 https://stackoverflow.com/questions/28042426/spring-boot-error-creating-bean-with-name-datasource-defined-in-class-path-r
+
+https://www.objectdb.com/java/jpa/query/parameter
