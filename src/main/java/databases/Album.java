@@ -1,6 +1,7 @@
 package databases;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,9 +15,11 @@ public class Album {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Song> songs;
 
-    public Album(Integer year, List<Song> songs) {
+    public Album() {}
+
+    public Album(Integer year) {
         this.year = year;
-        this.songs = songs;
+        this.songs = new ArrayList<>();
     }
 
 
@@ -34,5 +37,9 @@ public class Album {
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public void addSong(Song song) {
+        songs.add(song);
     }
 }

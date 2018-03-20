@@ -12,6 +12,8 @@ public class Song {
 
     private String name;
 
+    public Song() {}
+
     public Song(String name) {
         this.name = name;
     }
