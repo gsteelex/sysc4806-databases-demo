@@ -1,5 +1,6 @@
 package databases.controllers;
 
+import databases.AcousticSong;
 import databases.Album;
 import databases.Song;
 import databases.controllers.requestModels.AlbumRequest;
@@ -78,6 +79,25 @@ public class ObjectDBDemo {
     @RequestMapping(value = "/songs", method = RequestMethod.GET)
     public List<Song> getSongs() {
         TypedQuery<Song> songsQuery = database.createQuery("SELECT song FROM Song song", Song.class);
+        return songsQuery.getResultList();
+    }
+
+    @RequestMapping(value = "/songs/acoustic", method = RequestMethod.POST)
+    public AcousticSong createSampleAcousticSong() {
+        AcousticSong song = new AcousticSong();
+        song.setInstrument("banjo");
+        song.setName("sample");
+
+        database.getTransaction().begin();
+        database.persist(song);
+        database.getTransaction().commit();
+
+        return song;
+    }
+
+    @RequestMapping(value = "/songs/acoustic", method = RequestMethod.GET)
+    public List<AcousticSong> getAcousticSongs() {
+        TypedQuery<AcousticSong> songsQuery = database.createQuery("SELECT song FROM AcousticSong song", AcousticSong.class);
         return songsQuery.getResultList();
     }
 }
