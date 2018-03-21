@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
@@ -63,6 +64,12 @@ public class ObjectDBDemo {
     public List<Album> getAlbums() {
         TypedQuery<Album> albumsQuery = database.createQuery("SELECT album FROM Album album", Album.class);
         return albumsQuery.getResultList();
+    }
+
+    @RequestMapping(value= "/albums/count", method = RequestMethod.GET)
+    public Long getAlbumCount() {
+        Query albumsQuery = database.createQuery("SELECT COUNT(album.year) FROM Album album");
+        return (Long) albumsQuery.getSingleResult();
     }
 
     @RequestMapping(value = "/songs", method = RequestMethod.POST)
