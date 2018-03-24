@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ObjectDB Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/main.js"></script>
+</head>
+<body>
+
+<h1>ObjectDB Demo</h1>
+
+<div>
+    <h2>Create Song</h2>
+    <form id = "songForm" action="#" method="post">
+        <p>Course Name: <input type="text" name="name" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <pre id="createSongResult"></pre>
+</div>
+
+<div>
+    <h2>Create Sample Acoustic Song</h2>
+    <button id="createSampleAcoustic">Create</button>
+    <pre id="createAcousticSongResult"></pre>
+</div>
+
+<div>
+    <h2>Create Album with Songs</h2>
+    <form id = "albumForm" action="#" method="post">
+        <p>Album Year:  <input type="number" name="year" /></p>
+        <p>Song List (multiple selectable): <select multiple="" id="albumSongsSelect" name="songs[]"></select></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    <pre id="createAlbumResult"></pre>
+</div>
+
+<div>
+    <h2>List Albums</h2>
+    <button id="listAlbums">List Albums</button>
+    <pre id="albumList"></pre>
+</div>
+
+<div>
+    <h2>Album Count</h2>
+    <button id="countAlbum">Query the number of Albums</button>
+    <pre id="albumCount"></pre>
+</div>
+
+</body>
+</html>

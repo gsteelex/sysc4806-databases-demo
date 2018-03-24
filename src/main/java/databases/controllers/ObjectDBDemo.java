@@ -50,7 +50,13 @@ public class ObjectDBDemo {
         for (Integer songId: albumRequest.getSongs()) {
             TypedQuery<Song> songQuery = database.createQuery("SELECT song FROM Song song WHERE song.id = " + songId, Song.class);
 
-            album.addSong(songQuery.getSingleResult());
+            if (songQuery.getResultList().size() == 0) {
+                TypedQuery<AcousticSong> acousticSongQuery = database.createQuery("SELECT song FROM AcousticSong song WHERE song.id = " + songId, AcousticSong.class);
+                album.addSong(acousticSongQuery.getSingleResult());
+
+            } else {
+                album.addSong(songQuery.getSingleResult());
+            }
         }
 
         database.getTransaction().begin();
