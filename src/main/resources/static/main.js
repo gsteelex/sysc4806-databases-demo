@@ -25,14 +25,12 @@ var handleCreateSongSubmitted = (e) => {
 
 
 var updateSongListInAlbumForm = () => {
-    $.get("/objectDB/songs", function(songs){
-        $.get("/objectDB/songs/acoustic", function(acousticSongs){
-            var allSongs = songs.concat(acousticSongs);
+    $('#albumSongsSelect').html(EMPTY_HTML);
 
-            allSongs.forEach((song) => {
-                $('#albumSongsSelect').append('<option value="' + song.id + '">' + song.id + ': ' + song.name + '</option>');
-            });
-        });
+    $.get("/objectDB/songs", function(songs){
+         songs.forEach((song) => {
+            $('#albumSongsSelect').append('<option value="' + song.id + '">' + song.id + ': ' + song.name + '</option>');
+         });
     });
 };
 
